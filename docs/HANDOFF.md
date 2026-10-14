@@ -1,5 +1,7 @@
 # Preserve the run and retire stored cloud assets
 
+**Completed:** the owner supplied successful retirement output on October 14, 2026. The named demo repository, dataset, and bucket were removed. The instructions below are retained for reproducibility; do not rerun deletion against already removed resources.
+
 The completed endpoint was undeployed. Container images, Cloud Storage objects, and BigQuery tables remained after that operation. Their continued cost depends on current usage, free allowances, trial status, and billing terms. Billing being enabled does not verify available trial credits.
 
 ## Evidence provenance

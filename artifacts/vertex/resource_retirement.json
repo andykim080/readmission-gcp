@@ -1,0 +1,20 @@
+{
+  "recorded_on": "2026-10-14",
+  "source": "Project owner supplied successful Cloud Shell retirement output in this conversation.",
+  "verification_scope": "Recorded terminal completion, not an independent cloud API or billing audit.",
+  "artifact_registry_demo_repository": "deleted",
+  "bigquery_demo_dataset": "deleted",
+  "cloud_storage_demo_bucket": "deleted",
+  "prediction_endpoint": "previously undeployed; live inactivity checked by retirement script before deletion",
+  "active_custom_training_jobs": "none found by retirement script before deletion",
+  "local_backup": "downloaded, SHA256 matched, archive integrity and run consistency passed",
+  "retained_by_script": [
+    "registered model metadata",
+    "empty endpoint"
+  ],
+  "limits": [
+    "Prior incurred charges are not erased.",
+    "This record covers the named demo assets, not every possible service in the GCP project.",
+    "The unused private Sites registration is separate from GCP and remains unpublished."
+  ]
+}

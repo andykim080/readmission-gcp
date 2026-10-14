@@ -32,6 +32,8 @@ The sample score is one prediction, not an accuracy measure. Cloud training repr
 
 [Full Vertex metrics](artifacts/vertex/metrics.json) and the [cloud evaluation report](artifacts/vertex/report.html) now accompany the original local results. `artifacts/metrics.json` remains the measured **local** run with its original execution type and values.
 
+**Resource retirement completed:** the demo container repository, BigQuery dataset, and Cloud Storage bucket were deleted after a checksum-verified local backup. The registered model metadata and empty endpoint remain. [Retirement record](artifacts/vertex/resource_retirement.json) documents the owner-supplied completion output. Re-running the cloud demo requires recreating its stored assets.
+
 ## Files worth reviewing
 
 1. [Model experiments notebook](01_model_experiments.ipynb): patient-group splits, CV, modeling, calibration, and measured results.
