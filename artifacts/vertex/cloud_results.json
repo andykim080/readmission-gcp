@@ -1,0 +1,21 @@
+{
+  "feature_rows": 73244,
+  "bigquery_feature_parity": "passed",
+  "training_status": "JOB_STATE_SUCCEEDED",
+  "endpoint_status": "undeployed",
+  "trained_model": "bagged_trees",
+  "test_metrics": {
+    "average_precision": 0.20489910424979418,
+    "roc_auc": 0.6589033111148522,
+    "precision_at_capacity": 0.2513812154696133,
+    "recall_at_capacity": 0.25068870523415976
+  },
+  "scope": "Retrospective learning prototype; predictive quality and clinical limitations are documented.",
+  "sample_prediction": [
+    {
+      "model": "bagged_trees",
+      "readmission_risk": 0.07870059125373019
+    }
+  ],
+  "provenance": "Transcribed from project-owner-supplied Cloud Shell completion output. Cloud account and resource identifiers intentionally omitted. Original file has not been downloaded or independently rechecked."
+}
