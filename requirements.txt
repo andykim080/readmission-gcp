@@ -1,0 +1,12 @@
+numpy==1.26.4
+pandas==2.2.3
+scipy==1.14.1
+scikit-learn==1.5.2
+xgboost==2.1.4
+joblib==1.4.2
+fastapi==0.115.12
+uvicorn==0.34.2
+google-cloud-bigquery==3.31.0
+google-cloud-storage==2.19.0
+google-cloud-aiplatform==1.90.0
+httpx==0.28.1

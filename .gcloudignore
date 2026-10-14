@@ -1,0 +1,15 @@
+.gcloudignore
+.git/
+.venv/
+data/
+artifacts/
+__pycache__/
+**/__pycache__/
+cloud-state.json
+.env
+*.key
+*credentials*.json
+.ipython/
+.jupyter/
+.matplotlib/
+.ipynb_checkpoints/

@@ -1,0 +1,59 @@
+{
+  "created_at_utc": "2026-10-14T03:55:13.891530+00:00",
+  "selected_candidate": "xgb_engineered",
+  "selected_spec": {
+    "name": "xgb_engineered",
+    "family": "xgb",
+    "learning_rate": 0.05,
+    "n_estimators": 300,
+    "max_depth": 4,
+    "min_child_weight": 20,
+    "reg_lambda": 5,
+    "early_stopping": false,
+    "engineered_features": true
+  },
+  "selection_metric": "training-only group CV mean average precision",
+  "training_encounters": 51325,
+  "training_patients": 38438,
+  "candidate_count": 4,
+  "cv_folds": 5,
+  "candidate_specs": [
+    {
+      "name": "lr_C_0.01",
+      "family": "lr",
+      "C": 0.01,
+      "early_stopping": false
+    },
+    {
+      "name": "lr_C_0.1",
+      "family": "lr",
+      "C": 0.1,
+      "early_stopping": false
+    },
+    {
+      "name": "lr_engineered",
+      "family": "lr",
+      "C": 0.5,
+      "early_stopping": false,
+      "engineered_features": true
+    },
+    {
+      "name": "xgb_engineered",
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false,
+      "engineered_features": true
+    }
+  ],
+  "evaluation_status": "development_cv_only_no_test_scoring",
+  "limitations": [
+    "Repeated parameter comparisons can overfit the development folds.",
+    "CV variability is not a confidence interval.",
+    "These comparisons do not establish clinically useful performance.",
+    "The original test results were previously inspected and are not an untouched final evaluation."
+  ]
+}

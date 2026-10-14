@@ -1,0 +1,92 @@
+{
+  "created_at_utc": "2026-10-14T03:54:56.901898+00:00",
+  "selected_candidate": "xgb_more_trees",
+  "selected_spec": {
+    "name": "xgb_more_trees",
+    "family": "xgb",
+    "learning_rate": 0.03,
+    "n_estimators": 1500,
+    "max_depth": 4,
+    "min_child_weight": 20,
+    "reg_lambda": 5,
+    "early_stopping": true
+  },
+  "selection_metric": "training-only group CV mean average precision",
+  "training_encounters": 51325,
+  "training_patients": 38438,
+  "candidate_count": 8,
+  "cv_folds": 5,
+  "candidate_specs": [
+    {
+      "name": "lr_C_0.5",
+      "family": "lr",
+      "C": 0.5,
+      "early_stopping": false
+    },
+    {
+      "name": "lr_C_1",
+      "family": "lr",
+      "C": 1.0,
+      "early_stopping": false
+    },
+    {
+      "name": "lr_C_10",
+      "family": "lr",
+      "C": 10.0,
+      "early_stopping": false
+    },
+    {
+      "name": "lr_C_100",
+      "family": "lr",
+      "C": 100.0,
+      "early_stopping": false
+    },
+    {
+      "name": "xgb_original",
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false
+    },
+    {
+      "name": "xgb_more_trees",
+      "family": "xgb",
+      "learning_rate": 0.03,
+      "n_estimators": 1500,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": true
+    },
+    {
+      "name": "xgb_flexible",
+      "family": "xgb",
+      "learning_rate": 0.03,
+      "n_estimators": 1500,
+      "max_depth": 6,
+      "min_child_weight": 5,
+      "reg_lambda": 1,
+      "early_stopping": true
+    },
+    {
+      "name": "xgb_deeper",
+      "family": "xgb",
+      "learning_rate": 0.03,
+      "n_estimators": 1500,
+      "max_depth": 8,
+      "min_child_weight": 1,
+      "reg_lambda": 1,
+      "early_stopping": true
+    }
+  ],
+  "evaluation_status": "development_cv_only_no_test_scoring",
+  "limitations": [
+    "Repeated parameter comparisons can overfit the development folds.",
+    "CV variability is not a confidence interval.",
+    "These comparisons do not establish clinically useful performance.",
+    "The original test results were previously inspected and are not an untouched final evaluation."
+  ]
+}

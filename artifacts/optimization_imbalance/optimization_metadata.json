@@ -1,0 +1,95 @@
+{
+  "created_at_utc": "2026-10-14T04:02:41.114223+00:00",
+  "selected_candidate": "xgb_positive_weight_ratio",
+  "selected_spec": {
+    "family": "xgb",
+    "learning_rate": 0.05,
+    "n_estimators": 300,
+    "max_depth": 4,
+    "min_child_weight": 20,
+    "reg_lambda": 5,
+    "early_stopping": false,
+    "name": "xgb_positive_weight_ratio",
+    "scale_pos_weight": "ratio"
+  },
+  "selection_metric": "training-only group CV mean average precision",
+  "training_encounters": 51325,
+  "training_patients": 38438,
+  "candidate_count": 7,
+  "cv_folds": 5,
+  "candidate_specs": [
+    {
+      "name": "lr_balanced_C_0.01",
+      "family": "lr",
+      "C": 0.01,
+      "early_stopping": false,
+      "class_weight": "balanced"
+    },
+    {
+      "name": "lr_balanced_C_0.1",
+      "family": "lr",
+      "C": 0.1,
+      "early_stopping": false,
+      "class_weight": "balanced"
+    },
+    {
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false,
+      "name": "xgb_positive_weight_2",
+      "scale_pos_weight": 2.0
+    },
+    {
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false,
+      "name": "xgb_positive_weight_ratio",
+      "scale_pos_weight": "ratio"
+    },
+    {
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false,
+      "name": "xgb_comorbidity_flags",
+      "comorbidity_flags": true
+    },
+    {
+      "family": "xgb",
+      "learning_rate": 0.05,
+      "n_estimators": 300,
+      "max_depth": 4,
+      "min_child_weight": 20,
+      "reg_lambda": 5,
+      "early_stopping": false,
+      "name": "xgb_weighted_comorbidities",
+      "comorbidity_flags": true,
+      "scale_pos_weight": "ratio"
+    },
+    {
+      "name": "lr_comorbidity_flags",
+      "family": "lr",
+      "C": 0.01,
+      "early_stopping": false,
+      "comorbidity_flags": true
+    }
+  ],
+  "evaluation_status": "development_cv_only_no_test_scoring",
+  "limitations": [
+    "Repeated parameter comparisons can overfit the development folds.",
+    "CV variability is not a confidence interval.",
+    "These comparisons do not establish clinically useful performance.",
+    "The original test results were previously inspected and are not an untouched final evaluation."
+  ]
+}
