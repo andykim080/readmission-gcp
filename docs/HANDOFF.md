@@ -45,7 +45,7 @@ After downloading and verifying the archive locally, remove the demo image repos
 bash scripts/retire-gcp-demo.sh --backup-downloaded YOUR_PROJECT_ID
 ```
 
-This permanently deletes those specific resources. The script checks backup contents, confirms no model is deployed, and refuses to proceed if active custom training jobs remain. It disables soft delete for new deletions on the demo bucket, then removes that bucket. Already soft-deleted objects are unaffected. It keeps registered model metadata and the empty endpoint. Redeployment requires restoring the backed-up model and rebuilding a container.
+This permanently deletes those specific resources. The script verifies the backup SHA256 and contents, uses the Cloud Shell gcloud login for live checks, confirms no model is deployed, and refuses to proceed if active custom training jobs remain. It disables soft delete for new deletions on the demo bucket, then removes that bucket. Already soft-deleted objects are unaffected. It keeps registered model metadata and the empty endpoint. Redeployment requires restoring the backed-up model and rebuilding a container.
 
 Successful completion confirms these named resources were removed. It does not erase prior charges or audit every service in the project.
 

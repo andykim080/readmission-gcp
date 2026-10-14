@@ -10,12 +10,14 @@ PROJECT_ID="${2:?Pass your dedicated demo project ID after --backup-downloaded}"
 export PROJECT_ID
 REGION="us-central1"
 .venv/bin/python - <<'PY'
-import json, zipfile, os
+import json, zipfile, os, subprocess, hashlib
 from pathlib import Path
-from google.cloud import aiplatform
 state = json.loads(Path('cloud-state.json').read_text())
 if state.get('project') != os.environ['PROJECT_ID'] or state.get('bucket') != os.environ['PROJECT_ID'] + '-readmission-demo':
     raise SystemExit('State does not match the demo resources. Nothing was deleted.')
+expected = Path('gcp-evidence.zip.sha256').read_text().split()[0]
+if hashlib.sha256(Path('gcp-evidence.zip').read_bytes()).hexdigest() != expected:
+    raise SystemExit('Backup checksum does not match. Nothing was deleted.')
 with zipfile.ZipFile('gcp-evidence.zip') as archive:
     if archive.testzip():
         raise SystemExit('Backup is corrupt. Nothing was deleted.')
@@ -26,14 +28,27 @@ with zipfile.ZipFile('gcp-evidence.zip') as archive:
     archived = json.loads(archive.read('cloud-state.json'))
     if archived.get('training_job') != state.get('training_job'):
         raise SystemExit('Backup belongs to another run. Nothing was deleted.')
-aiplatform.init(project=state['project'], location='us-central1')
-endpoint = aiplatform.Endpoint(state['endpoint'])
-if endpoint.gca_resource.deployed_models:
+def cloud_json(arguments):
+    # Cloud Shell's gcloud session and Python ADC use different credential paths.
+    command = ['gcloud', 'ai', *arguments, '--project=' + state['project'],
+               '--region=us-central1', '--format=json']
+    try:
+        result = subprocess.run(command, check=True, stdout=subprocess.PIPE,
+                                text=True, timeout=60)
+        return json.loads(result.stdout)
+    except (subprocess.CalledProcessError, subprocess.TimeoutExpired, json.JSONDecodeError):
+        raise SystemExit('Cloud status check failed. Nothing was deleted. Reconnect/authorize Cloud Shell and try again.')
+endpoint = cloud_json(['endpoints', 'describe', state['endpoint']])
+if not isinstance(endpoint, dict) or endpoint.get('name') != state['endpoint']:
+    raise SystemExit('Unexpected endpoint response. Nothing was deleted.')
+if endpoint.get('deployedModels'):
     raise SystemExit('Endpoint has deployed models. Undeploy before removing stored assets.')
-active = [job.resource_name for job in aiplatform.CustomJob.list() if job.state.name in {
-    'JOB_STATE_PENDING', 'JOB_STATE_QUEUED', 'JOB_STATE_RUNNING', 'JOB_STATE_CANCELLING'}]
-if active:
-    raise SystemExit('Active training jobs remain. Nothing was deleted.')
+jobs = cloud_json(['custom-jobs', 'list'])
+if not isinstance(jobs, list):
+    raise SystemExit('Unexpected job-list response. Nothing was deleted.')
+terminal = {'JOB_STATE_SUCCEEDED', 'JOB_STATE_FAILED', 'JOB_STATE_CANCELLED', 'JOB_STATE_EXPIRED'}
+if any(job.get('state') not in terminal for job in jobs):
+    raise SystemExit('Active or unrecognized training jobs remain. Nothing was deleted.')
 print('Checks passed. Removing only the named demo repository, dataset, and bucket.')
 PY
 # Registry model metadata and the empty endpoint remain, without the deleted assets.
