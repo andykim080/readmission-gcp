@@ -21,3 +21,13 @@ cloud-state.json
 *.pem
 .env.*
 *service-account*.json
+
+backups/
+
+artifacts/vertex/cloud_evidence.json
+
+artifacts/vertex/endpoint_prediction.json
+
+artifacts/vertex/sample_request.json
+
+artifacts/vertex/test_predictions.csv

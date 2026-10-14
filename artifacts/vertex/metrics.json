@@ -1,0 +1,740 @@
+{
+  "created_at_utc": "2026-10-14T05:06:52.510673+00:00",
+  "execution": "vertex",
+  "cloud_status": "vertex_training_run",
+  "selected_model": "bagged_trees",
+  "selection_metric": "five-fold patient-group CV mean average precision on training data",
+  "cross_validation": {
+    "bagged_trees": {
+      "average_precision": {
+        "mean": 0.20579358442287532,
+        "std": 0.014027519873980656
+      },
+      "roc_auc": {
+        "mean": 0.6641312975530189,
+        "std": 0.0056316045303483175
+      },
+      "brier_score": {
+        "mean": 0.08555415945344193,
+        "std": 0.0024143830492989946
+      },
+      "precision_at_capacity": {
+        "mean": 0.24148003894839337,
+        "std": 0.019068311613988448
+      },
+      "recall_at_capacity": {
+        "mean": 0.24361566574268007,
+        "std": 0.014246103036019949
+      }
+    },
+    "logistic_regression": {
+      "average_precision": {
+        "mean": 0.19845973426541946,
+        "std": 0.011542263534829953
+      },
+      "roc_auc": {
+        "mean": 0.6542070157321136,
+        "std": 0.004809391008258402
+      },
+      "brier_score": {
+        "mean": 0.08607416011307384,
+        "std": 0.0024796180964972987
+      },
+      "precision_at_capacity": {
+        "mean": 0.24031158714703021,
+        "std": 0.012091265103233023
+      },
+      "recall_at_capacity": {
+        "mean": 0.2425420312709722,
+        "std": 0.00700674909758657
+      }
+    },
+    "xgboost": {
+      "average_precision": {
+        "mean": 0.20354419577071634,
+        "std": 0.010701018460681819
+      },
+      "roc_auc": {
+        "mean": 0.6673056962897719,
+        "std": 0.004386887379797511
+      },
+      "brier_score": {
+        "mean": 0.0855012651443889,
+        "std": 0.0024279799368304685
+      },
+      "precision_at_capacity": {
+        "mean": 0.24089581304771177,
+        "std": 0.018888464991830917
+      },
+      "recall_at_capacity": {
+        "mean": 0.24305724241855325,
+        "std": 0.014802796425613846
+      }
+    }
+  },
+  "workflow_comparison": {
+    "no_cv_no_bagging": {
+      "selected_model": "logistic_regression",
+      "selection": "fixed validation average precision",
+      "test_metrics": {
+        "n": 10858,
+        "positive_count": 1089,
+        "positive_rate": 0.10029471357524405,
+        "roc_auc": 0.6530245362078898,
+        "average_precision": 0.20212760994499787,
+        "brier_score": 0.08665693528974767,
+        "outreach_count": 1086,
+        "capacity_fraction": 0.1,
+        "readmissions_in_top_capacity": 253,
+        "precision_at_capacity": 0.23296500920810312,
+        "recall_at_capacity": 0.23232323232323232,
+        "lift_at_capacity": 2.3228044719757426,
+        "calibration": [
+          {
+            "predicted": 0.04219555938582641,
+            "observed": 0.0423572744014733
+          },
+          {
+            "predicted": 0.05554171748636019,
+            "observed": 0.06353591160220995
+          },
+          {
+            "predicted": 0.06403586697670924,
+            "observed": 0.058931860036832415
+          },
+          {
+            "predicted": 0.07193423947132224,
+            "observed": 0.06728110599078341
+          },
+          {
+            "predicted": 0.07989909503023979,
+            "observed": 0.09023941068139964
+          },
+          {
+            "predicted": 0.08841164010913925,
+            "observed": 0.0856353591160221
+          },
+          {
+            "predicted": 0.09899174188267344,
+            "observed": 0.0967741935483871
+          },
+          {
+            "predicted": 0.11251353326102347,
+            "observed": 0.12430939226519337
+          },
+          {
+            "predicted": 0.13443657320737976,
+            "observed": 0.1408839779005525
+          },
+          {
+            "predicted": 0.22191819899104484,
+            "observed": 0.23296500920810312
+          }
+        ]
+      }
+    },
+    "cv_without_bagging": {
+      "selected_model": "xgboost",
+      "selection": "training-only five-fold patient-group CV average precision",
+      "test_metrics": {
+        "n": 10858,
+        "positive_count": 1089,
+        "positive_rate": 0.10029471357524405,
+        "roc_auc": 0.6649779793862653,
+        "average_precision": 0.2055706090856788,
+        "brier_score": 0.08633502840075807,
+        "outreach_count": 1086,
+        "capacity_fraction": 0.1,
+        "readmissions_in_top_capacity": 278,
+        "precision_at_capacity": 0.2559852670349908,
+        "recall_at_capacity": 0.25528007346189163,
+        "lift_at_capacity": 2.5523306055701838,
+        "calibration": [
+          {
+            "predicted": 0.040068310727456175,
+            "observed": 0.03406998158379374
+          },
+          {
+            "predicted": 0.052672960361704456,
+            "observed": 0.06721915285451197
+          },
+          {
+            "predicted": 0.06084866873670557,
+            "observed": 0.058931860036832415
+          },
+          {
+            "predicted": 0.06851838119646143,
+            "observed": 0.07004608294930875
+          },
+          {
+            "predicted": 0.07618572005128495,
+            "observed": 0.06998158379373849
+          },
+          {
+            "predicted": 0.08482584798639338,
+            "observed": 0.09392265193370165
+          },
+          {
+            "predicted": 0.09589051758286729,
+            "observed": 0.10046082949308756
+          },
+          {
+            "predicted": 0.11278297070649218,
+            "observed": 0.10128913443830571
+          },
+          {
+            "predicted": 0.14072472997475333,
+            "observed": 0.15101289134438306
+          },
+          {
+            "predicted": 0.2245888910352841,
+            "observed": 0.2559852670349908
+          }
+        ]
+      }
+    },
+    "cv_with_bagging": {
+      "selected_model": "bagged_trees",
+      "selection": "training-only five-fold patient-group CV average precision",
+      "test_metrics": {
+        "n": 10858,
+        "positive_count": 1089,
+        "positive_rate": 0.10029471357524405,
+        "roc_auc": 0.6589033111148522,
+        "average_precision": 0.20489910424979418,
+        "brier_score": 0.08636104378557079,
+        "outreach_count": 1086,
+        "capacity_fraction": 0.1,
+        "readmissions_in_top_capacity": 273,
+        "precision_at_capacity": 0.2513812154696133,
+        "recall_at_capacity": 0.25068870523415976,
+        "lift_at_capacity": 2.506425378851296,
+        "calibration": [
+          {
+            "predicted": 0.04725305147742214,
+            "observed": 0.04788213627992634
+          },
+          {
+            "predicted": 0.054681061718499936,
+            "observed": 0.052486187845303865
+          },
+          {
+            "predicted": 0.06096258507997668,
+            "observed": 0.06721915285451197
+          },
+          {
+            "predicted": 0.06712450580613331,
+            "observed": 0.0728110599078341
+          },
+          {
+            "predicted": 0.07302879655444201,
+            "observed": 0.06721915285451197
+          },
+          {
+            "predicted": 0.08064087411170377,
+            "observed": 0.09392265193370165
+          },
+          {
+            "predicted": 0.09404269639910934,
+            "observed": 0.09308755760368663
+          },
+          {
+            "predicted": 0.111809993671226,
+            "observed": 0.11049723756906077
+          },
+          {
+            "predicted": 0.14112186169140317,
+            "observed": 0.1464088397790055
+          },
+          {
+            "predicted": 0.22544811704234183,
+            "observed": 0.2513812154696133
+          }
+        ]
+      }
+    }
+  },
+  "validation_metrics": {
+    "logistic_regression": {
+      "n": 11061,
+      "positive_count": 1079,
+      "positive_rate": 0.0975499502757436,
+      "roc_auc": 0.6528459289742853,
+      "average_precision": 0.1909582774560991,
+      "brier_score": 0.08513386709209707,
+      "outreach_count": 1107,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 252,
+      "precision_at_capacity": 0.22764227642276422,
+      "recall_at_capacity": 0.23354958294717332,
+      "lift_at_capacity": 2.3335970523746012,
+      "calibration": [
+        {
+          "predicted": 0.03327551294723018,
+          "observed": 0.04065040650406504
+        },
+        {
+          "predicted": 0.04744242199501758,
+          "observed": 0.05334538878842676
+        },
+        {
+          "predicted": 0.056941580716424176,
+          "observed": 0.06148282097649186
+        },
+        {
+          "predicted": 0.06570171596293742,
+          "observed": 0.07414104882459313
+        },
+        {
+          "predicted": 0.07493824405911205,
+          "observed": 0.07414104882459313
+        },
+        {
+          "predicted": 0.08587713428859739,
+          "observed": 0.09764918625678119
+        },
+        {
+          "predicted": 0.09954250046959114,
+          "observed": 0.08770343580470162
+        },
+        {
+          "predicted": 0.11787220124751813,
+          "observed": 0.11754068716094032
+        },
+        {
+          "predicted": 0.1463078177036638,
+          "observed": 0.1410488245931284
+        },
+        {
+          "predicted": 0.26187457828403016,
+          "observed": 0.22784810126582278
+        }
+      ]
+    },
+    "xgboost": {
+      "n": 11061,
+      "positive_count": 1079,
+      "positive_rate": 0.0975499502757436,
+      "roc_auc": 0.6630254662284606,
+      "average_precision": 0.19074562913923612,
+      "brier_score": 0.08477299139252807,
+      "outreach_count": 1107,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 258,
+      "precision_at_capacity": 0.23306233062330622,
+      "recall_at_capacity": 0.2391102873030584,
+      "lift_at_capacity": 2.389158886954949,
+      "calibration": [
+        {
+          "predicted": 0.038482083536031664,
+          "observed": 0.031616982836495035
+        },
+        {
+          "predicted": 0.05114771372842422,
+          "observed": 0.051537070524412296
+        },
+        {
+          "predicted": 0.05961596694308422,
+          "observed": 0.06057866184448463
+        },
+        {
+          "predicted": 0.06756801259911081,
+          "observed": 0.06871609403254973
+        },
+        {
+          "predicted": 0.07599093814196897,
+          "observed": 0.07866184448462929
+        },
+        {
+          "predicted": 0.0856341771431146,
+          "observed": 0.08408679927667269
+        },
+        {
+          "predicted": 0.09799327808440701,
+          "observed": 0.11211573236889692
+        },
+        {
+          "predicted": 0.11695823158267178,
+          "observed": 0.11573236889692586
+        },
+        {
+          "predicted": 0.14875783412894117,
+          "observed": 0.13924050632911392
+        },
+        {
+          "predicted": 0.2464844008897571,
+          "observed": 0.2332730560578662
+        }
+      ]
+    },
+    "bagged_trees": {
+      "n": 11061,
+      "positive_count": 1079,
+      "positive_rate": 0.0975499502757436,
+      "roc_auc": 0.6689534210698813,
+      "average_precision": 0.19211466298348315,
+      "brier_score": 0.08477173337042535,
+      "outreach_count": 1107,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 250,
+      "precision_at_capacity": 0.22583559168925021,
+      "recall_at_capacity": 0.23169601482854496,
+      "lift_at_capacity": 2.315076440847819,
+      "calibration": [
+        {
+          "predicted": 0.05360725266728774,
+          "observed": 0.03432700993676603
+        },
+        {
+          "predicted": 0.0611086221451622,
+          "observed": 0.04159132007233273
+        },
+        {
+          "predicted": 0.06725953699467307,
+          "observed": 0.05515370705244123
+        },
+        {
+          "predicted": 0.07300779322041347,
+          "observed": 0.07142857142857142
+        },
+        {
+          "predicted": 0.07855405911407992,
+          "observed": 0.07323688969258589
+        },
+        {
+          "predicted": 0.0857725659455261,
+          "observed": 0.10216998191681737
+        },
+        {
+          "predicted": 0.09861342552177611,
+          "observed": 0.09954751131221719
+        },
+        {
+          "predicted": 0.11481164129790909,
+          "observed": 0.11743450767841011
+        },
+        {
+          "predicted": 0.14179091575451583,
+          "observed": 0.1546112115732369
+        },
+        {
+          "predicted": 0.21866902986712644,
+          "observed": 0.22603978300180833
+        }
+      ]
+    }
+  },
+  "test_metrics": {
+    "logistic_regression": {
+      "n": 10858,
+      "positive_count": 1089,
+      "positive_rate": 0.10029471357524405,
+      "roc_auc": 0.6530245362078898,
+      "average_precision": 0.20212760994499787,
+      "brier_score": 0.08678151517737745,
+      "outreach_count": 1086,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 253,
+      "precision_at_capacity": 0.23296500920810312,
+      "recall_at_capacity": 0.23232323232323232,
+      "lift_at_capacity": 2.3228044719757426,
+      "calibration": [
+        {
+          "predicted": 0.03393872617327306,
+          "observed": 0.0423572744014733
+        },
+        {
+          "predicted": 0.04770679515175987,
+          "observed": 0.06353591160220995
+        },
+        {
+          "predicted": 0.05699756611816155,
+          "observed": 0.058931860036832415
+        },
+        {
+          "predicted": 0.06591700134581284,
+          "observed": 0.06728110599078341
+        },
+        {
+          "predicted": 0.07515212034724528,
+          "observed": 0.09023941068139964
+        },
+        {
+          "predicted": 0.0852657710176469,
+          "observed": 0.0856353591160221
+        },
+        {
+          "predicted": 0.09814564154674277,
+          "observed": 0.0967741935483871
+        },
+        {
+          "predicted": 0.11504968029583956,
+          "observed": 0.12430939226519337
+        },
+        {
+          "predicted": 0.14334027103035557,
+          "observed": 0.1408839779005525
+        },
+        {
+          "predicted": 0.26065075585812375,
+          "observed": 0.23296500920810312
+        }
+      ]
+    },
+    "xgboost": {
+      "n": 10858,
+      "positive_count": 1089,
+      "positive_rate": 0.10029471357524405,
+      "roc_auc": 0.6649779793862653,
+      "average_precision": 0.2055706090856788,
+      "brier_score": 0.08628135202532983,
+      "outreach_count": 1086,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 278,
+      "precision_at_capacity": 0.2559852670349908,
+      "recall_at_capacity": 0.25528007346189163,
+      "lift_at_capacity": 2.5523306055701838,
+      "calibration": [
+        {
+          "predicted": 0.03826408584226561,
+          "observed": 0.03406998158379374
+        },
+        {
+          "predicted": 0.051116172347773506,
+          "observed": 0.06721915285451197
+        },
+        {
+          "predicted": 0.059571173601195515,
+          "observed": 0.058931860036832415
+        },
+        {
+          "predicted": 0.06756391908441271,
+          "observed": 0.07004608294930875
+        },
+        {
+          "predicted": 0.07560679426289835,
+          "observed": 0.06998158379373849
+        },
+        {
+          "predicted": 0.08472454267284708,
+          "observed": 0.09392265193370165
+        },
+        {
+          "predicted": 0.09647478696800048,
+          "observed": 0.10046082949308756
+        },
+        {
+          "predicted": 0.11454813063666087,
+          "observed": 0.10128913443830571
+        },
+        {
+          "predicted": 0.14471848866118472,
+          "observed": 0.15101289134438306
+        },
+        {
+          "predicted": 0.23628275528632475,
+          "observed": 0.2559852670349908
+        }
+      ]
+    },
+    "bagged_trees": {
+      "n": 10858,
+      "positive_count": 1089,
+      "positive_rate": 0.10029471357524405,
+      "roc_auc": 0.6589033111148522,
+      "average_precision": 0.20489910424979418,
+      "brier_score": 0.08649671919313867,
+      "outreach_count": 1086,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 273,
+      "precision_at_capacity": 0.2513812154696133,
+      "recall_at_capacity": 0.25068870523415976,
+      "lift_at_capacity": 2.506425378851296,
+      "calibration": [
+        {
+          "predicted": 0.05363563636766928,
+          "observed": 0.04788213627992634
+        },
+        {
+          "predicted": 0.060881023830367,
+          "observed": 0.052486187845303865
+        },
+        {
+          "predicted": 0.0668990140665173,
+          "observed": 0.06721915285451197
+        },
+        {
+          "predicted": 0.07272454060606108,
+          "observed": 0.0728110599078341
+        },
+        {
+          "predicted": 0.07824141423301513,
+          "observed": 0.06721915285451197
+        },
+        {
+          "predicted": 0.08526800191143082,
+          "observed": 0.09392265193370165
+        },
+        {
+          "predicted": 0.09744202035252374,
+          "observed": 0.09308755760368663
+        },
+        {
+          "predicted": 0.1132719557060175,
+          "observed": 0.11049723756906077
+        },
+        {
+          "predicted": 0.13876694034091236,
+          "observed": 0.1464088397790055
+        },
+        {
+          "predicted": 0.2095693491440365,
+          "observed": 0.2513812154696133
+        }
+      ]
+    },
+    "selected_calibrated": {
+      "n": 10858,
+      "positive_count": 1089,
+      "positive_rate": 0.10029471357524405,
+      "roc_auc": 0.6589033111148522,
+      "average_precision": 0.20489910424979418,
+      "brier_score": 0.08636104378557079,
+      "outreach_count": 1086,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 273,
+      "precision_at_capacity": 0.2513812154696133,
+      "recall_at_capacity": 0.25068870523415976,
+      "lift_at_capacity": 2.506425378851296,
+      "calibration": [
+        {
+          "predicted": 0.04725305147742214,
+          "observed": 0.04788213627992634
+        },
+        {
+          "predicted": 0.054681061718499936,
+          "observed": 0.052486187845303865
+        },
+        {
+          "predicted": 0.06096258507997668,
+          "observed": 0.06721915285451197
+        },
+        {
+          "predicted": 0.06712450580613331,
+          "observed": 0.0728110599078341
+        },
+        {
+          "predicted": 0.07302879655444201,
+          "observed": 0.06721915285451197
+        },
+        {
+          "predicted": 0.08064087411170377,
+          "observed": 0.09392265193370165
+        },
+        {
+          "predicted": 0.09404269639910934,
+          "observed": 0.09308755760368663
+        },
+        {
+          "predicted": 0.111809993671226,
+          "observed": 0.11049723756906077
+        },
+        {
+          "predicted": 0.14112186169140317,
+          "observed": 0.1464088397790055
+        },
+        {
+          "predicted": 0.22544811704234183,
+          "observed": 0.2513812154696133
+        }
+      ]
+    },
+    "constant_training_prevalence": {
+      "n": 10858,
+      "positive_count": 1089,
+      "positive_rate": 0.10029471357524405,
+      "roc_auc": 0.5,
+      "average_precision": 0.10029471357524405,
+      "brier_score": 0.09023707928745038,
+      "outreach_count": 1086,
+      "capacity_fraction": 0.1,
+      "readmissions_in_top_capacity": 115,
+      "precision_at_capacity": 0.10589318600368323,
+      "recall_at_capacity": 0.10560146923783287,
+      "lift_at_capacity": 1.0558202145344284,
+      "calibration": [
+        {
+          "predicted": 0.09911349245008888,
+          "observed": 0.10029471357524405
+        }
+      ]
+    }
+  },
+  "features": [
+    "time_in_hospital",
+    "num_lab_procedures",
+    "num_procedures",
+    "num_medications",
+    "number_outpatient",
+    "number_emergency",
+    "number_inpatient",
+    "number_diagnoses",
+    "age",
+    "admission_type_id",
+    "discharge_disposition_id",
+    "admission_source_id",
+    "diag_1",
+    "diag_2",
+    "diag_3",
+    "max_glu_serum",
+    "A1Cresult",
+    "metformin",
+    "repaglinide",
+    "nateglinide",
+    "chlorpropamide",
+    "glimepiride",
+    "acetohexamide",
+    "glipizide",
+    "glyburide",
+    "tolbutamide",
+    "pioglitazone",
+    "rosiglitazone",
+    "acarbose",
+    "miglitol",
+    "troglitazone",
+    "tolazamide",
+    "insulin",
+    "glyburide-metformin",
+    "glipizide-metformin",
+    "glimepiride-pioglitazone",
+    "metformin-rosiglitazone",
+    "metformin-pioglitazone",
+    "change",
+    "diabetesMed"
+  ],
+  "training_encounters": 51325,
+  "validation_encounters": 11061,
+  "test_encounters": 10858,
+  "patient_overlap_between_splits": 0,
+  "versions": {
+    "python": "3.12.15",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "sklearn": "1.5.2",
+    "xgboost": "2.1.4"
+  },
+  "calibration": {
+    "method": "sigmoid on validation log odds",
+    "slope": 1.1463000814247986,
+    "intercept": 0.2862217905641529
+  },
+  "limitations": [
+    "Historical 1999\u20132008 data; results do not establish current clinical usefulness.",
+    "Patient-group holdout, not temporal or hospital holdout; encounter dates and hospital IDs are unavailable.",
+    "Only diabetes-associated encounters discharged home or with home services are included.",
+    "The target is recorded early readmission, not necessarily avoidable or captured across all hospitals.",
+    "Outreach prioritization is evaluated retrospectively; reduced readmissions are not demonstrated.",
+    "Model selection used five-fold training-group CV; validation data was reserved for calibration.",
+    "Group differences are descriptive and do not certify fairness; small samples are flagged."
+  ]
+}

@@ -1,5 +1,9 @@
 {
-  "source": "Owner-supplied completion output",
-  "original_cloud_shell_file_downloaded": false,
-  "public_scope": "Aggregate model results and workflow completion status; no cloud resource identifiers."
+  "source": "Original Cloud Shell archive supplied by project owner",
+  "original_cloud_shell_file_downloaded": true,
+  "archive_sha256": "a403158240ca9cdd22ab7dfb80faf6ef487cb50638b289cc71ef5b02d0fa2667",
+  "archive_integrity": "passed",
+  "consistency_checks": "passed",
+  "public_scope": "Aggregate results and workflow status. Cloud resource identifiers and original archive remain local.",
+  "verification_scope": "Downloaded records, not a new GCP API query."
 }

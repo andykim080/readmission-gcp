@@ -17,5 +17,5 @@
       "readmission_risk": 0.07870059125373019
     }
   ],
-  "provenance": "Transcribed from project-owner-supplied Cloud Shell completion output. Cloud account and resource identifiers intentionally omitted. Original file has not been downloaded or independently rechecked."
+  "provenance": "Extracted from the original, checksum-verified Cloud Shell archive supplied by the project owner. Cloud account and resource identifiers omitted. Downloaded records were checked for internal consistency; current cloud state was not independently re-queried."
 }

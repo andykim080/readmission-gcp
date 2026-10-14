@@ -39,5 +39,7 @@ PY
 # Registry model metadata and the empty endpoint remain, without the deleted assets.
 gcloud artifacts repositories delete readmission-demo --project="$PROJECT_ID" --location="$REGION" --quiet
 bq --project_id="$PROJECT_ID" --location="$REGION" rm -r -f "$PROJECT_ID:readmission_demo"
+# Disable soft delete for new deletions after the verified local backup.
+gcloud storage buckets update "gs://${PROJECT_ID}-readmission-demo" --clear-soft-delete
 gcloud storage rm --recursive "gs://${PROJECT_ID}-readmission-demo"
 printf 'Demo container repository, BigQuery dataset, and Cloud Storage bucket removed. Backup retained.\n'

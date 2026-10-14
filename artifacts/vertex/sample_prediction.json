@@ -1,0 +1,8 @@
+{
+  "predictions": [
+    {
+      "readmission_risk": 0.07870059125373019,
+      "model": "bagged_trees"
+    }
+  ]
+}

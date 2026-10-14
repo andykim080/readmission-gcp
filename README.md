@@ -28,7 +28,9 @@ A retrospective predictive-modeling prototype for the question: **if a team can 
 
 The sample score is one prediction, not an accuracy measure. Cloud training reproduced the original model-comparison workflow; the later tuning experiments remain development-only.
 
-[Cloud results](artifacts/vertex/cloud_results.json) records the successful workflow status, sample prediction, and measured results. Cloud account and resource IDs are omitted from this public repository. [Provenance](artifacts/vertex/evidence_provenance.json): this local evidence was faithfully transcribed from the successful Cloud Shell output supplied by the project owner. The original file has not yet been downloaded or independently rechecked. `artifacts/metrics.json` remains the measured **local** run, so its execution type and metric values are not relabeled as cloud results.
+[Cloud results](artifacts/vertex/cloud_results.json) records the completed workflow and measured results. [Provenance](artifacts/vertex/evidence_provenance.json): original Cloud Shell files were downloaded, their archive SHA256 matched, ZIP integrity passed, and cloud state, endpoint prediction, completion evidence, and Vertex metrics agreed. This verifies the saved run, not current GCP resource state. Full cloud identifiers and the backup archive are kept locally and excluded from the public repository.
+
+[Full Vertex metrics](artifacts/vertex/metrics.json) and the [cloud evaluation report](artifacts/vertex/report.html) now accompany the original local results. `artifacts/metrics.json` remains the measured **local** run with its original execution type and values.
 
 ## Files worth reviewing
 

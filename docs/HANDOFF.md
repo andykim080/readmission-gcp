@@ -4,9 +4,11 @@ The completed endpoint was undeployed. Container images, Cloud Storage objects, 
 
 ## Evidence provenance
 
-The public `artifacts/vertex/cloud_results.json` contains aggregate metrics and workflow status transcribed from successful Cloud Shell output. The original `cloud_evidence.json` with resource IDs is kept outside this public repository. `evidence_provenance.json` records that the original file has not yet been downloaded. Do not describe this copy as independently retrieved or reverified.
+The project owner downloaded the original Cloud Shell archive. Its SHA256 matched the supplied checksum, ZIP integrity passed, and the state, completion evidence, endpoint response, and Vertex metrics were consistent. The full archive and cloud identifiers are preserved locally. Public cloud results omit resource identifiers, raw encounter predictions, model binaries, and machine state.
 
-The original cloud metrics, report, saved model, and state are in the Cloud Shell checkout. Cloud Shell can delete its home directory after 120 days without access: https://cloud.google.com/shell/docs/quotas-limits . GCP resources and this repository's saved transcript-derived evidence are separate records, but a local archive is still necessary.
+The endpoint was undeployed at the captured run's completion. Download verification does not establish current cloud state. The retirement script checks the endpoint and active training jobs before removing stored assets.
+
+Cloud Shell can delete its home directory after 120 days without access: https://cloud.google.com/shell/docs/quotas-limits . Keep the downloaded archive on your computer.
 
 ## Download originals before deleting cloud assets
 
@@ -25,7 +27,7 @@ shasum -a 256 gcp-evidence.zip
 unzip -t gcp-evidence.zip
 ```
 
-Compare the checksum with the `.sha256` file. Keep model binaries and machine state out of the public repository. After downloading, replace transcript-derived evidence with the original file and update its provenance. Commit cloud report/metrics separately from local results.
+Compare the checksum with the `.sha256` file. Keep model binaries and machine state out of the public repository. The current repository already includes verified original cloud metrics and the report, separately from the local results. Keep the downloaded originals for your records.
 
 ## Inventory and retirement
 
@@ -43,7 +45,7 @@ After downloading and verifying the archive locally, remove the demo image repos
 bash scripts/retire-gcp-demo.sh --backup-downloaded YOUR_PROJECT_ID
 ```
 
-This permanently deletes those specific resources. The script checks backup contents, confirms no model is deployed, and refuses to proceed if active custom training jobs remain. It keeps registered model metadata and the empty endpoint. Redeployment requires restoring the backed-up model and rebuilding a container.
+This permanently deletes those specific resources. The script checks backup contents, confirms no model is deployed, and refuses to proceed if active custom training jobs remain. It disables soft delete for new deletions on the demo bucket, then removes that bucket. Already soft-deleted objects are unaffected. It keeps registered model metadata and the empty endpoint. Redeployment requires restoring the backed-up model and rebuilding a container.
 
 Successful completion confirms these named resources were removed. It does not erase prior charges or audit every service in the project.
 
